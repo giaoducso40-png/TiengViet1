@@ -33,7 +33,7 @@ html{scroll-padding-top:84px}body{color:var(--ink);background:linear-gradient(18
 @media(max-width:1080px){.wrap{width:min(100% - 30px,960px)}.story-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:960px}.story-card h3{min-height:0}.cue-list{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-copy h1{font-size:clamp(3.1rem,5.8vw,4.5rem)}.nav-row strong{display:none}.nav-links{width:100%;justify-content:center}.player-layout{max-width:none}}
 @media(max-width:680px){html{scroll-padding-top:113px}.wrap{width:min(100% - 24px,540px)}.site-head{padding:8px 0 16px}.brand{font-size:1.08rem}.brand-mark{height:45px;width:45px}.brand-mark img{height:42px;width:42px}.grade-pill{font-size:.72rem;padding:7px 9px}.hero{padding:16px 0 0;gap:16px}.hero-copy h1{font-size:clamp(2.95rem,10.4vw,4rem);line-height:1.07;margin:10px auto}.hero-copy p{font-size:1.04rem;margin-bottom:14px}.hero-actions .btn{min-width:0;flex:1 1 150px;font-size:.85rem;min-height:46px;padding:9px}.hero-visual{border-width:4px;border-radius:21px}.hero-visual img{aspect-ratio:16/9}.hero-caption{font-size:.78rem;padding:7px}.section{padding:22px 0}.section-title{font-size:clamp(1.75rem,7vw,2.35rem)}.section-lead{font-size:.95rem}.nav-shell{padding:6px 0}.nav-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.nav-links a{min-width:0;font-size:.78rem;min-height:34px;padding:8px 5px;box-shadow:0 3px 0 #6fc4d9}.story-grid,.cue-list,.memory-grid{grid-template-columns:1fr}.story-card h3{font-size:1.44rem;min-height:0}.story-card p{font-size:.95rem}.player-section{padding-top:21px}.player-head{gap:8px}.player-head h2{font-size:1.44rem}.player-topic{font-size:.88rem}.fullscreen-btn{min-height:35px;font-size:.75rem}.panel{padding:11px}.video-frame{border-radius:11px}.cover-play{height:43px;width:43px}.cover-play:after{border-top-width:8px;border-bottom-width:8px;border-left-width:14px}.cover-inner span{font-size:.84rem}.cover-inner button{min-height:38px;font-size:.8rem}.play-note{font-size:.77rem}.cue-list{gap:9px}.cue{padding:11px}.teacher-intro{font-size:.82rem}.memory-card{padding:13px}.teacher-note{padding:13px}}
 @media(max-width:390px){.grade-pill{display:none}.brand{font-size:1rem}.nav-links a{font-size:.72rem}.hero-copy h1{font-size:2.8rem}}
-@media(prefers-reduced-motion:reduce){.hero-visual img,.hero-visual:after{animation:none!important;transform:none!important}.story-card .art-box img{transition:none}}
+@media(prefers-reduced-motion:reduce){.story-card .art-box img{transition:none}}
 
 .footer-credit{display:block;margin-top:7px;color:#0b4e74;font-size:1rem;font-weight:800}
 /* Điện thoại: giữ hình, chữ và nút trong các khung ổn định. */
@@ -50,8 +50,8 @@ html{scroll-padding-top:84px}body{color:var(--ink);background:linear-gradient(18
  .hero-actions{display:grid;grid-template-columns:1fr;gap:10px;width:min(100%,360px);margin-inline:auto}
  .hero-actions .btn{width:100%;min-width:0;min-height:48px;margin:0;font-size:.92rem;white-space:normal}
  .hero-visual{width:100%;min-width:0;margin:0;overflow:hidden}
- .hero-visual img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:center;animation:none!important;transform:none!important;will-change:auto}
- .hero-visual:after{animation:none!important;opacity:.4;transform:none!important}
+ .hero-visual>img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:center}
+ .hero-visual:after{opacity:.4}
  .hero-caption{min-height:31px;line-height:1.2}
  .nav-shell{position:sticky;top:0}
  .nav-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;width:100%;overflow:visible}
@@ -117,7 +117,7 @@ html{scroll-padding-top:84px}body{color:var(--ink);background:linear-gradient(18
  .hero-visual img{animation:garden-pan 6s ease-in-out infinite alternate!important;transform-origin:center!important;will-change:transform}
  .hero-visual:after{animation:glow-pulse 3.6s ease-in-out infinite alternate!important}
 }
-@media(prefers-reduced-motion:reduce){.firefly,.hero-visual img,.hero-visual:after{animation:none!important;transform:none!important}.firefly{opacity:1;will-change:auto}}
+
 
 
 /* Hạt sáng lấy từ chuyển động của GIF gốc, vẽ trên nền trong suốt và cắt đúng mép tranh. */
@@ -125,12 +125,19 @@ html{scroll-padding-top:84px}body{color:var(--ink);background:linear-gradient(18
 .hero-visual .gif-motes canvas{position:absolute;inset:0;display:block;width:100%;height:100%;background:transparent}
 .hero-visual .firefly-layer{inset:auto;top:0;left:0;width:100%;height:auto;aspect-ratio:16/9;overflow:hidden}
 @media(max-width:700px){.hero-visual .gif-motes,.hero-visual .firefly-layer{aspect-ratio:4/3}.hero-visual .gif-motes canvas{inset:0 auto auto -16.6667%;width:133.3334%;height:100%}}
-@media(prefers-reduced-motion:reduce){.hero-visual .gif-motes{display:none}}
+
 
 /* Ảnh đầu trang chuyển động trong khung cố định, không làm thay đổi kích thước hay vị trí chữ. */
 .hero-visual>img{animation:garden-pan 5.8s ease-in-out infinite alternate!important;transform-origin:center;will-change:transform}
 @keyframes garden-pan{0%{transform:translate3d(-1.8%,.4%,0) scale(1.065)}50%{transform:translate3d(0,-.6%,0) scale(1.1)}100%{transform:translate3d(1.8%,-.3%,0) scale(1.075)}}
-@media(prefers-reduced-motion:reduce){.hero-visual>img{animation:none!important;transform:none!important;will-change:auto}}
+
+
+/* Ảnh đầu trang và đom đóm tự chạy; các thành phần khác vẫn tôn trọng thiết lập giảm chuyển động. */
+@media(prefers-reduced-motion:reduce){
+ .hero-visual>img{animation:garden-pan 5.8s ease-in-out infinite alternate!important}
+ .hero-visual .firefly{animation:firefly-flight var(--flight,4.5s) ease-in-out infinite!important}
+ .hero-visual:after{animation:glow-pulse 3.6s ease-in-out infinite alternate!important}
+}
 </style>
 </head>
 <body>
@@ -141,7 +148,7 @@ html{scroll-padding-top:84px}body{color:var(--ink);background:linear-gradient(18
     </div>
     <div class="wrap hero">
       <div class="hero-copy"><span class="eyebrow">MỞ SÁCH · MỞ ĐIỀU HAY</span><h1>Vườn kể <span>chuyện AI</span></h1><p>Không gian kể chuyện sinh động dành cho học sinh lớp 1.</p><div class="hero-actions"><a class="btn btn-primary" href="#stories">Khám phá truyện <span aria-hidden="true">→</span></a><a class="btn btn-soft" href="#watch">Vào góc trình chiếu</a></div></div>
-      <div class="hero-visual"><img id="garden-art" alt="Thỏ và các bạn trong khu vườn kể chuyện" width="750" height="563"><div class="gif-motes" aria-hidden="true"><canvas id="firefly-canvas" width="320" height="180"></canvas></div><div class="firefly-layer" aria-hidden="true"><span class="firefly"></span><span class="firefly"></span><span class="firefly"></span><span class="firefly"></span></div><div class="hero-caption"><i aria-hidden="true"></i> Mỗi câu chuyện, một điều tử tế</div></div>
+      <div class="hero-visual"><img id="garden-art" alt="Thỏ và các bạn trong khu vườn kể chuyện" width="750" height="563"><div class="gif-motes" aria-hidden="true"><canvas id="firefly-canvas" width="320" height="180"></canvas></div><div class="firefly-layer" aria-hidden="true"><span class="firefly"></span><span class="firefly"></span><span class="firefly"></span><span class="firefly"></span></div><div class="hero-caption"><span>Mỗi câu chuyện, một điều tử tế</span></div></div>
     </div>
   </header>
 
@@ -223,23 +230,22 @@ html{scroll-padding-top:84px}body{color:var(--ink);background:linear-gradient(18
       }
       function tick(now) {
         requestId = 0;
-        if (reduceMotion.matches || document.hidden) return;
+        if (document.hidden) return;
         const frame = Math.floor((now - startTime) / 70) % count;
         if (frame !== frameShown) { draw(frame); frameShown = frame; }
         requestId = requestAnimationFrame(tick);
       }
       function resume() {
-        if (reduceMotion.matches || document.hidden || requestId) return;
+        if (document.hidden || requestId) return;
         startTime = performance.now(); frameShown = -1;
         requestId = requestAnimationFrame(tick);
       }
       function pause() {
         if (requestId) cancelAnimationFrame(requestId);
         requestId = 0;
-        if (reduceMotion.matches) context.clearRect(0, 0, canvas.width, canvas.height);
+        context.clearRect(0, 0, canvas.width, canvas.height);
       }
       document.addEventListener("visibilitychange", () => document.hidden ? pause() : resume());
-      if (reduceMotion.addEventListener) reduceMotion.addEventListener("change", () => reduceMotion.matches ? pause() : resume());
       resume();
     }
 
